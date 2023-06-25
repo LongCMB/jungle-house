@@ -1,25 +1,27 @@
-import Banner from "./Banner"
+import { useState } from 'react'
+import Banner from './Banner'
 import logo from '../assets/logo.png'
-import Cart from "./Cart"
-import ShoppingList from "./ShoppingList"
-import Footer from "./Footer"
+import Cart from './Cart'
+// import QuestionForm from './QuestionForm'
+import ShoppingList from './ShoppingList'
 
-const title = 'Jungle House'
+import '../styles/App.css'
 
 function App() {
-  return (
-    <div className="App">
-      <Banner>
-        <div className="jh-banner">
-          <img src={logo} alt={title} className='jh-logo' />
-          <h1 className='jh-title'>{title}</h1>
-        </div>
-      </Banner>
-      <Cart />
-      <ShoppingList />
-      <Footer />
-    </div>
-  )
+	const [cart, updateCart] = useState({})
+	return (
+		<div>
+			<Banner>
+				<img src={logo} alt='Jungle House' className='jh-logo' />
+				<h1 className='jh-title'>Jungle House</h1>
+			</Banner>
+			{/* <QuestionForm /> */}
+			<div className='jh-layout'>
+				<Cart cart={cart} updateCart={updateCart} />
+				<ShoppingList cart={cart} updateCart={updateCart} />
+			</div>
+		</div>
+	)
 }
 
 export default App
